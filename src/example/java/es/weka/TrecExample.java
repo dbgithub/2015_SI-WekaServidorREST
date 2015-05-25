@@ -1,9 +1,6 @@
 package es.weka;
 
 import java.io.File;
-import java.io.FileWriter;
-import java.io.InputStream;
-import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,7 +31,7 @@ public class TrecExample {
                 //load training data from file
                 //this will check that attributes match TrecFeatures enum, that class attribute is named "class" and is of correct type, and so on.
                 Dataset<TrecFeatures,TrecClass> dataset = decider.createNewDataset() ;
-                dataset.load(new File("workspace/2015_SI-WekaServidorREST/src/example/resources/trecv3.arff")) ;
+                dataset.load(new File("workspace/2015_SI-WekaServidorREST/src/example/resources/trec.arff")) ;
                 
 
                 //train a classifier using loaded training data.
@@ -49,7 +46,7 @@ public class TrecExample {
                 //unfortunately this doesn't make any checks to see if classifier was trained on expected attributes
                 decider.load(new File("workspace/2015_SI-WekaServidorREST/src/example/resources/trec.model"));
                 
-                String correo = "";
+                //String correo = "";
                 //HAM
                 //correo = "Hi...\n I have to use r to find out the confidence-interval for the sensitivity and specificity of the following diagnostic test: a particular diagnostic test for multiple sclerosis was conducted on  ms patients and  healthy subjects,  ms patients were classified as healthy and  healthy subjects were classified as suffering from the ms. Furthermore, I need to find the number of ms patients required for a sensitivity of is there a simple r-command which can do that for me? I am completely new to r... help please! View this message in context: sent from the r help mailing list archive at nabble.com. Mailing list please do read the posting guide and provide commented, minimal, self-contained, reproducible code.";
                 //HAM

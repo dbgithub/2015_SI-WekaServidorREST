@@ -32,7 +32,7 @@ public class TrecLinesExample {
                 //load training data from file
                 //this will check that attributes match TrecFeatures enum, that class attribute is named "class" and is of correct type, and so on.
                 Dataset<TrecFeatures,TrecClass> dataset = decider.createNewDataset() ;
-                dataset.load(new File("src/example/resources/trecv6.arff")) ;
+                dataset.load(new File("src/example/resources/treclines.arff")) ;
 
                 //train a classifier using loaded training data.
                 decider.train(new SMO(), dataset) ;
@@ -40,11 +40,11 @@ public class TrecLinesExample {
                 //save the classifier so we could skip training in future
                 //unfortunately this doesn't make any checks to see if classifier was trained on expected attributes
                 //any idea how one would do that?
-                decider.save(new File("src/example/resources/trec.model")) ;
+                decider.save(new File("src/example/resources/treclines.model")) ;
 
                 //load the classifier saved previously
                 //unfortunately this doesn't make any checks to see if classifier was trained on expected attributes
-                decider.load(new File("src/example/resources/trec.model")) ;
+                decider.load(new File("src/example/resources/treclines.model")) ;
                 
                 String correo = "    \n \tby speedy.uwaterloo.ca  with esmtp id  \n \tfor  sun,  apr    \n date: sun,  apr    \n received: from mail.cnn.com  \n   by  with esmtp;  apr    \n message-id:  \n from: cnn alerts  \n reply-to:  \n to:  \n subject: cnn alerts: bush\n \n mime-version:  \n content-type:   \n status: o\n \n content-length:  \n lines: ";
                 //HAM

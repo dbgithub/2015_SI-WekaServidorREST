@@ -42,7 +42,7 @@ public class HomeController {
 	
 	/**
 	 * Responde a la URL "/correo" gracias al RequestMapping.
-	 * Requiere de un parametro llamado "id", podría ser obcional pero así es más sencillo.
+	 * Requiere de un parametro llamado "id", podrï¿½a ser obcional pero asï¿½ es mï¿½s sencillo.
 	 * En vez de devolver un String como el nombre de la vista home.jsp va a devolver un objeto del tipo Persona.
 	 * La etiqueta @ResponseBody le dice a Spring Framework que convierta en objeto una respuesta http.
 	 * El parametro value="id" de dentro de la anotacion RequestParam especifica como ha de escribirse la URL
@@ -67,20 +67,17 @@ public class HomeController {
 	 * @return Correo
 	 */
 	@RequestMapping(value="/checkSPAM_HAM", method = RequestMethod.GET)
-	public @ResponseBody Boolean checkWhetherSPAMorHAM(@RequestParam(value="emailText", required=true) String text){
+	public @ResponseBody String checkWhetherSPAMorHAM(@RequestParam(value="emailText", required=true) String text){
 		logger.info("entrando en metodo checkWhetherSPAMorHAM");
 		logger.info("-- string = " + text);
 		String[] args = {text};
-		Boolean b = null;
 		String s = "";
 		try {
 			 s = TrecExample.main(args);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		if (s.equals("ham")) b = true;
-		else if (s.equals("spam")) b = false;
-		logger.info("-- returned value = " + b);	
-		return b;
+		logger.info("-- returned value = " + s);	
+		return s.toUpperCase();
 	}
 }

@@ -33,7 +33,7 @@ public class MiniExample {
                 //load training data from file
                 //this will check that attributes match TrecFeatures enum, that class attribute is named "class" and is of correct type, and so on.
                 Dataset<TrecFeatures,TrecClass> dataset = decider.createNewDataset() ;
-                dataset.load(new File("src/example/resources/result.arff")) ;
+                dataset.load(new File("src/example/resources/mini.arff")) ;
 
                 //train a classifier using loaded training data.
                 decider.train(new SMO(), dataset) ;
@@ -41,11 +41,11 @@ public class MiniExample {
                 //save the classifier so we could skip training in future
                 //unfortunately this doesn't make any checks to see if classifier was trained on expected attributes
                 //any idea how one would do that?
-                decider.save(new File("src/example/resources/trec.model")) ;
+                decider.save(new File("src/example/resources/mini.model")) ;
 
                 //load the classifier saved previously
                 //unfortunately this doesn't make any checks to see if classifier was trained on expected attributes
-                decider.load(new File("src/example/resources/trec.model")) ;
+                decider.load(new File("src/example/resources/mini.model")) ;
 
                 String correo = "You are a winner U have been specially selected 2 receive £1000";
                 System.out.println(correo);
