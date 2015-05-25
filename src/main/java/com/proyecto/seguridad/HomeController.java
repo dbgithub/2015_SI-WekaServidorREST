@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import es.weka.TrecExample;
+
 /**
  * Handles requests for the application home page.
  */
@@ -68,10 +70,17 @@ public class HomeController {
 	public @ResponseBody Boolean checkWhetherSPAMorHAM(@RequestParam(value="emailText", required=true) String text){
 		logger.info("entrando en metodo checkWhetherSPAMorHAM");
 		logger.info("-- string = " + text);
+		String[] args = {text};
 		Boolean b = null;
-		if (text.equals("bueno bueno")) b = true;
-		else if (text.equals("malo malo")) b = false;
-		logger.info("-- returned value = " + b);
+		String s = "";
+		try {
+			 s = TrecExample.main(args);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if (s.equals("ham")) b = true;
+		else if (s.equals("spam")) b = false;
+		logger.info("-- returned value = " + b);	
 		return b;
 	}
 }

@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.seguridadinformacion</groupId>
 	<artifactId>proyecto</artifactId>
-	<name>MiServicioREST</name>
+	<name>WekaServidorREST</name>
 	<packaging>war</packaging>
 	<!-- <modules>
 		<module>2015_SI-Weka</module>
@@ -15,14 +15,27 @@
 		<org.springframework-version>3.1.1.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<dependencies>
+	
 		<!-- Proyecto maven anidado (WEKA) -->
-		<dependency>
-			<groupId>org.dmilne</groupId>
-			<artifactId>weka-wrapper</artifactId>
-			<version>0.0.2-SNAPSHOT</version>
-		</dependency>
+   	    <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.6.4</version>
+        </dependency>
+        <dependency>
+            <groupId>nz.ac.waikato.cms.weka</groupId>
+            <artifactId>weka-stable</artifactId>
+            <version>3.6.6</version>
+        </dependency>
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -162,6 +175,15 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+				<executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
                 <version>2.5.1</version>
                 <configuration>
                     <source>1.6</source>
